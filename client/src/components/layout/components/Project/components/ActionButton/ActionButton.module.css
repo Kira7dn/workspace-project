@@ -1,0 +1,33 @@
+/* Action Button */
+.actionTag:hover {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.actionIcon:hover {
+  /* transform: scale(1.5); */
+  opacity: 1;
+  color: var(--main-color);
+}
+.actionTag {
+  /* display: none; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 14px;
+  right: -60px;
+  height: 100%;
+  width: 62px;
+  align-items: center;
+  transition: opacity 100ms 150ms;
+}
+.actionIcon {
+  display: block;
+  height: auto;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s;
+  opacity: 0.4;
+  margin: 6px 6px 4px 0px;
+}

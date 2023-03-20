@@ -1,0 +1,26 @@
+.wrapper {
+  height: 100%;
+  flex-shrink: 0;
+  color: #333;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 500px;
+  padding: 10px 0;
+  margin-top: 30px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.menuItem {
+  text-align: center;
+  color: #000;
+  font-size: 20px;
+  line-height: 55px;
+}
+.menuTitle {
+  margin-left: 14px;
+}

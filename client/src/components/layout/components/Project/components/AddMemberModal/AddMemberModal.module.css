@@ -1,0 +1,81 @@
+/* Friend (new) */
+.friendContainer {
+    display: flex;
+    justify-content: start;
+}
+.friendAvatar {
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.friendInfo {
+    margin-left: 20px;
+    display: flex;
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+}
+.friendInfoName {
+}
+.profile-content {
+    width: 100%;
+    padding: 5px;
+    border-radius: 4px;
+}
+.friendAction {
+    display: flex;
+    justify-content: space-between;
+}
+.friendActionBtn {
+    margin-right: 4px;
+    padding: 2px 8px;
+    align-self: flex-end;
+}
+.friend-window {
+    height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.friend-nav-btn {
+    padding: 2px;
+    margin: 2px 4px 4px 4px;
+}
+.memberListWindow {
+    height: 100px;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+/* Member Icon */
+.memberInfo {
+    display: inline-flex;
+    height: 10px;
+    align-items: center;
+    margin-right: 2px;
+    padding-right: 4px;
+    cursor: default;
+    border-radius: 2px;
+}
+.member-info:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.memberAvatar {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.memberName {
+    font-size: 10px;
+    text-transform: capitalize;
+}
+.member-list-info {
+    height: 50px;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+    line-height: 10px;
+    padding: 0 2px;
+}

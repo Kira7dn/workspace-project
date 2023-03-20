@@ -1,0 +1,30 @@
+/* Member Icon */
+.memberinfo {
+  display: inline-flex;
+  height: 10px;
+  align-items: center;
+  margin-right: 2px;
+  padding-right: 4px;
+  cursor: default;
+  border-radius: 2px;
+}
+.memberinfo:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.memberavatar {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.membername {
+  font-size: 10px;
+  text-transform: capitalize;
+}
+.memberlistinfo {
+  height: 50px;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  line-height: 10px;
+  padding: 0 2px;
+}

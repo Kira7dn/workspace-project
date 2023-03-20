@@ -1,0 +1,238 @@
+/* Project Item */
+.projectList {
+  margin-top: 10px;
+  margin-right: 20px;
+  margin-left: 16px;
+  border: solid 1px #888;
+  border-radius: 8px;
+  transition: ease 0.2s;
+  cursor: pointer;
+}
+.projectDesc {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  text-transform: capitalize;
+  border: none;
+  border-radius: 4px;
+}
+.leaderInfo {
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  cursor: default;
+  border-radius: 2px;
+}
+.leaderAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.leaderName {
+  margin-left: 6px;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.leaderContainer {
+  font-size: 24px;
+  padding: 0 6px 2px 6px;
+  /* margin-bottom: 4px; */
+}
+.leaderContainer:first-child {
+  margin-bottom: 4px;
+  border-radius: 4px 4px 0px 0px;
+}
+.leaderContainer:last-child {
+  border-radius: 0px 0px 4px 4px;
+}
+.leaderContainerTitle {
+  text-align: center;
+  height: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0;
+}
+.deadlineIcon {
+  width: 80px;
+  height: auto;
+  margin-right: 16px;
+}
+.deadlineTag {
+  position: absolute;
+  top: -24px;
+  right: -18px;
+  display: flex;
+  flex-direction: row;
+  padding: 4px;
+  align-items: center;
+  background-color: #fff;
+  border: solid 2px rgb(241, 11, 11);
+  border-radius: 4px 0 0 4px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.deadlineTag::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  bottom: -20px;
+  border-top: 18px solid rgba(241, 11, 11, 0.4);
+  border-right: 17px solid transparent;
+  filter: brightness(60%);
+}
+.deadlineContent {
+  display: inline-block;
+  font-size: 14px;
+  max-width: 56px;
+  cursor: text;
+  font-weight: 800;
+}
+.projectTitle {
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  height: 100%;
+}
+.projectContent {
+  display: inline-block;
+  font-size: 16px;
+  cursor: text;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+}
+.projectIcon {
+  width: 60px;
+  height: 40px;
+  margin-right: 16px;
+}
+.projectDescTitle {
+  padding: 4px;
+  font-size: 16px;
+  color: #000000;
+  font-weight: 600;
+}
+.projectDescContent {
+  padding: 6px;
+  font-size: 14px;
+  max-height: 120px;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  cursor: text;
+  color: #000000;
+}
+
+.projectTarget {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  text-transform: capitalize;
+  color: #000000;
+}
+
+.projectTargetTitle {
+  padding: 4px;
+  font-size: 16px;
+  color: #000000;
+}
+
+.projectTargetContent {
+  padding: 6px;
+  font-size: 14px;
+  max-height: 120px;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  cursor: text;
+  color: #000000;
+}
+.projectTargetContent:focus,
+.projectDescContent:focus {
+  color: #888;
+  background-color: rgba(59, 230, 130, 0.3);
+  border: solid 1px var(--main-color);
+  outline: 1;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.projectLeaderAdd {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.projectLeaderAdd:hover {
+  color: var(--main-color);
+}
+/* Member Icon */
+.memberInfo {
+  display: inline-flex;
+  height: 10px;
+  align-items: center;
+  margin-right: 2px;
+  padding-right: 4px;
+  cursor: default;
+  border-radius: 2px;
+}
+
+.memberAvatar {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.memberName {
+  font-size: 10px;
+  text-transform: capitalize;
+}
+.memberListInfo {
+  height: 44px;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  line-height: 10px;
+  padding: 0 2px;
+}
+.projectMembersAdd {
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+.projectMembersAdd:hover {
+  color: var(--main-color);
+}
+.addChildContainer {
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  right: 0;
+  flex: 0 0 auto;
+  width: 66.666667%;
+}
+.addChildBtn {
+  margin-top: 20px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.addChildBtn:hover {
+  transform: scale(1.5);
+}
+.noLeader {
+  font-size: 14px;
+}
+.teamList {
+  padding: 7;
+  border: 1px solid #ced4da;
+  border-radius: 0.4rem;
+  height: 120px;
+}
+.projectTeam {
+}

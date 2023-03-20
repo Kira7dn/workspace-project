@@ -1,0 +1,112 @@
+/* Friend (new) */
+.FriendList {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+}
+.FriendListHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+  align-items: center;
+}
+.FriendListTitle {
+  display: block;
+  font-weight: 400;
+  line-height: 1.1765rem;
+  word-wrap: break-word;
+  font-size: 1.0625rem;
+  color: var(--main-color);
+  margin: 0;
+}
+.FriendListAction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.FriendListActionItem {
+  margin: 4px;
+  font-weight: 200;
+  color: var(--main-color);
+}
+/* Scroll bar */
+.contactList::-webkit-scrollbar {
+  /* background-color: transparent; */
+  width: 8px;
+}
+.contactList {
+  height: 388px;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding: 8px 0 8px 0;
+  mask-image: linear-gradient(to top, transparent, black),
+    linear-gradient(to left, transparent 17px, black 17px);
+  mask-size: 100% 20000px;
+  mask-position: left bottom;
+  -webkit-mask-image: linear-gradient(to top, transparent, black),
+    linear-gradient(to left, transparent 8px, black 8px);
+  -webkit-mask-size: 100% 20000px;
+  -webkit-mask-position: left bottom;
+  transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+}
+.contactList:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+.contactList:hover {
+  -webkit-mask-position: left top;
+}
+.friendcontainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0px;
+  z-index: 1;
+}
+.friendavatar {
+  height: 40px;
+  width: 40px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.friendinfo {
+  margin-left: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+.friendinfoname {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.profile-content {
+  width: 100%;
+  padding: 5px;
+  border-radius: 4px;
+}
+.friendaction {
+  display: flex;
+  justify-content: space-between;
+  /* flex-direction: column; */
+}
+.friendActionBtn {
+  width: 60px;
+  padding: 2px 2px;
+  align-self: flex-end;
+  font-size: 12px;
+}
+.friendActionBtn:first-child {
+  margin-right: 2px;
+}
+.friendwindow {
+  height: 400px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.friend-nav-btn {
+  padding: 2px;
+  margin: 2px 4px 4px 4px;
+}

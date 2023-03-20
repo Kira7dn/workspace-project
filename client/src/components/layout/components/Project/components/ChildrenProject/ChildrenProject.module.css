@@ -1,0 +1,158 @@
+.list {
+    margin-top: 14px;
+    margin-right: 10px;
+    transition: ease 0.2s;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.listItem:hover {
+    transform: translateY(-10px) translateX(-10px);
+    box-shadow: 4px 4px 4px -2px rgba(71, 88, 82, 0.15);
+    border: 1px solid var(--main-color);
+}
+.listItem {
+    display: flex;
+    justify-content: between;
+    align-items: start;
+    cursor: pointer;
+    position: relative;
+    padding: 4px;
+    color: #212529;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid var(--main-color);
+    border-radius: 4px;
+    margin: 2px 0;
+    transition: transform 0.2s;
+}
+
+.child-container {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    color: #888;
+}
+.deadlineTag {
+    top: 20px;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    border-radius: 4px;
+    height: 100%;
+}
+
+.project-child-title {
+}
+
+.deadlineIcon {
+    width: 40%;
+    height: auto;
+}
+
+.childContainer:hover ~ .actionTag,
+.actionTag:hover {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.actionIcon:hover {
+    /* transform: scale(1.5); */
+    opacity: 1;
+    color: var(--main-color);
+}
+.actionTag {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    justify-content: center;
+    height: 80px;
+    width: 50px;
+    align-items: center;
+    transition: opacity 100ms 150ms;
+}
+.actionIcon {
+    display: block;
+    height: auto;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s;
+    opacity: 0.4;
+    margin-right: 6px;
+}
+
+.deadlineContent {
+    margin: 0;
+    height: 24px;
+    line-height: 24px;
+    font-size: 10px;
+    font-weight: 800;
+    text-align: center;
+    width: 50%;
+}
+
+.desc {
+}
+
+.project-child-desc-title {
+    font-size: 16px;
+}
+
+.descContent {
+    height: 30px;
+    line-height: 14px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    color: #888;
+}
+
+.leaderContainer {
+    font-size: 12px;
+}
+
+.project-child-leader-title {
+    height: 20px;
+    font-size: 16px;
+    line-height: 100%;
+}
+.incharge {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+.leaderInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.leaderAvatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.leaderName {
+    text-transform: capitalize;
+}
+.progressContainer {
+}
+
+.project-child-progress-title {
+}
+
+.progressBar {
+}

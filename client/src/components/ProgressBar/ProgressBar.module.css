@@ -1,0 +1,16 @@
+.projectProgressBar {
+  display: block;
+  margin-left: 20px;
+}
+.projectProgressContainer {
+  align-items: center;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  margin: 0 14px;
+}
+.projectProgressContainer > h5 {
+  font-size: 14px;
+  line-height: 100%;
+  margin: 0;
+}

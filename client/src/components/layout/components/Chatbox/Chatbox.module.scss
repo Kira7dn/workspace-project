@@ -1,0 +1,37 @@
+/* Chat box */
+
+.chatBox {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  margin-top: 20px;
+  margin-left: 6px;
+  margin-right: 6px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.chatBoxHeader {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px;
+  align-items: center;
+}
+.chatBoxTitle {
+  display: block;
+  font-weight: 5500;
+  line-height: 1.1765rem;
+  word-wrap: break-word;
+  font-size: 16px;
+  color: var(--main-color);
+}
+.chatBoxAction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chatBoxActionItem {
+  margin: 4px;
+  font-weight: 200;
+  color: var(--main-color);
+}

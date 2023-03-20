@@ -1,0 +1,32 @@
+.addChildContainer {
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    right: 0;
+    flex: 0 0 auto;
+    /* width: 66.666667%; */
+}
+.addChildBtn {
+    margin-top: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.addChildBtn:hover {
+    transform: scale(1.5);
+}
+.projectList {
+    margin-top: 10px;
+    margin-right: 5px;
+    border: solid 1px #888;
+    border-radius: 8px;
+    transition: transform 0.2s;
+    cursor: pointer;
+    position: relative;
+}
+.projectList:hover {
+    transform: translateY(-10px) translateX(10px);
+    border: solid 2px #888;
+    box-shadow: -4px 4px 4px -2px rgba(0, 0, 0, 0.15);
+}

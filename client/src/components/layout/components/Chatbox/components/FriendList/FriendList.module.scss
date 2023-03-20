@@ -1,0 +1,116 @@
+.contactList {
+    margin-top: 4px;
+    margin-left: 4px;
+  }
+  
+.friendItem {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 2px 4px 2px 0;
+    height: 36px;
+    cursor: pointer;
+    margin: 20px 0;
+    margin-right: 4px;
+}
+.friendItem:hover {
+    background-color: var(--bs-gray-400);
+}
+
+.friendAvatar {
+    display: flex;
+    // width: 25%;
+    justify-content: center;
+    margin-right: 16px;
+    margin-left: 4px;
+
+}
+.AvatarContainer{
+    position: relative;
+
+}
+.friendImg {
+    display: block;
+    border-radius: 50%;
+    z-index: 0;
+    width: 32px;
+    height: 32px;
+    border: solid 1px #fff;
+    object-fit: fill;
+}
+
+.friendStatus {
+    font-size: 10px;
+    position: absolute;
+    right: 0px;
+    bottom: 00px;
+    -webkit-text-stroke: 0.5px #fff;
+}
+.friendStatus.online {
+    color: #31a24c;
+}
+.friendInfo {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-right: 4px;
+}
+
+.friendName {
+    font-size: 12px;
+    color: #44494c;
+    font-weight: 600;
+    line-height: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.friendUsername {
+    font-size: 12px;
+    line-height: 100%;
+    color: #8e9aa2;
+}
+
+.friendAdd {
+    width: 16%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    padding: 4px;
+    font-size: 16px;
+    :hover{
+        color: var(--main-color);
+    }
+}
+
+/* Scroll bar */
+.contactList::-webkit-scrollbar {
+    background-color: transparent;
+    width: 8px;
+}
+.contactList {
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 8px 0 8px 0;
+    mask-image: linear-gradient(to top, transparent, black),
+    linear-gradient(to left, transparent 17px, black 17px);
+    mask-size: 100% 20000px;
+    mask-position: left bottom;
+    -webkit-mask-image: linear-gradient(to top, transparent, black),
+    linear-gradient(to left, transparent 8px, black 8px);
+    -webkit-mask-size: 100% 20000px;
+    -webkit-mask-position: left bottom;
+    transition: mask-position 0.3s, -webkit-mask-position 0.3s;
+}
+.contactList:hover::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+.contactList:hover {
+    -webkit-mask-position: left top;
+}
+  

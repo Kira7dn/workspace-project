@@ -1,0 +1,30 @@
+/* path bar */
+.pathBar {
+    margin: 4px 16px;
+    display: flex;
+    justify-content: flex-start;
+    display: inline-block;
+    height: 34px;
+}
+.pathBarSpace {
+    overflow: hidden;
+    width: 25%;
+    height: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    font-size: 12px;
+}
+.pathBarProject {
+    width: 25%;
+    height: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    font-size: 12px;
+}
+.arrowLeft:after {
+    content: '\25ba';
+    padding-left: 0.5em;
+}
