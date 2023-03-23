@@ -23,7 +23,6 @@ function PostItem({ post }) {
   const { user, content, media, views, like, retweet, comments, createdAt } =
     post;
   let time = getTimeDifference(createdAt);
-  console.log(time);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("inner")}>
