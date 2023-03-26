@@ -23,6 +23,14 @@ const CREATE_SPACE = gql`
     }
   }
 `;
+const CREATE_POST = gql`
+  mutation CREATE_POST($input: PostInput) {
+    addPost(input: $input) {
+      content
+      media
+    }
+  }
+`;
 const UPDATE_SPACE = gql`
   mutation UPDATE_SPACE($updateSpaceId: ID!, $input: SpaceInput) {
     updateSpace(id: $updateSpaceId, input: $input) {
@@ -121,4 +129,5 @@ export {
   NEW_PROJECT,
   UPDATE_PROJECT,
   DELETE_PROJECT,
+  CREATE_POST,
 };

@@ -1,10 +1,36 @@
 import classNames from "classnames/bind";
 import styles from "./PostInputForm.module.scss";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import { useCallback, useState } from "react";
+import { useMutation } from "@apollo/client";
+import { CREATE_POST } from "~/api/mutations";
+import { GET_POSTS } from "~/api/queries";
 
 const cx = classNames.bind(styles);
 function PostInputForm() {
+  const [uploadPost, { loading }] = useMutation(CREATE_POST, {
+    refetchQueries: [{ query: GET_POSTS }, "getPostsQuery"],
+  });
+  const [value, setValue] = useState("");
+  const handleChange = useCallback((event) => {
+    const input = event.target;
+    input.style.height = "auto";
+    input.style.height = input.scrollHeight + "px";
+    setValue(input.value);
+  }, []);
+  const handleSubmit = () => {
+    uploadPost({
+      variables: {
+        input: {
+          content: value,
+          media: null,
+        },
+      },
+    }).then(() => {
+      setValue("");
+    });
+  };
+
   return (
     <div className={cx("wrapper")}>
       <div className={cx("inner")}>
@@ -15,19 +41,8 @@ function PostInputForm() {
             alt="avatar"
           />
         </div>
-        <Formik
-          initialValues={{ idea: "" }}
-          validationSchema={Yup.object({
-            // idea: Yup.string().max(10, "Must be 500 characters or less"),
-          })}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              console.log(values.idea);
-              setSubmitting(false);
-            }, 400);
-          }}
-        >
-          {({ isSubmitting }) => (
+        <Formik initialValues={{ idea: "" }} onSubmit={handleSubmit}>
+          {() => (
             <Form className={cx("post-container")}>
               <div className={cx("input-container")}>
                 <div className={cx("input-header")}>
@@ -49,6 +64,8 @@ function PostInputForm() {
                     placeholder="Write your Idea"
                     name="idea"
                     as="textarea"
+                    value={value}
+                    onChange={handleChange}
                   />
                   <ErrorMessage name="idea" />
                 </div>
@@ -102,7 +119,7 @@ function PostInputForm() {
                 </div>
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={loading}
                   className={cx("action-button-post")}
                 >
                   POST

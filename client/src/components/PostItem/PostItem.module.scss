@@ -19,7 +19,7 @@
     border-radius:50%
 }
 .post-container{
-
+    flex: 1;
 }
 
 .post-header{
@@ -67,6 +67,7 @@
 .post-media{
     display: flex;
     justify-content:center;
+    min-height: 100px;
     max-height: 500px;
     width: 100%;
     overflow: hidden;

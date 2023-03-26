@@ -6,17 +6,19 @@ const cx = classNames.bind(styles);
 const { Comment, Share, Retweet, Like, Views } = Image;
 function getTimeDifference(timestamp) {
   const now = new Date();
+  let date = new Date(timestamp).toDateString().split(" ");
+  let result;
   const difference = now.getTime() - timestamp;
-  let hours = Math.floor(difference / (1000 * 60 * 60)) + 7;
+  let hours = Math.floor(difference / (1000 * 60 * 60));
   let minutes = Math.floor((difference / (1000 * 60)) % 60);
-  if (hours < 10) {
-    hours = "0" + hours;
+  if (hours > 24) {
+    result = `${date[1]} ${date[2]} ${date[3]}`;
+  } else if (hours > 1) {
+    result = `${hours} hour ago`;
+  } else {
+    result = `${minutes} minute ago`;
   }
-  if (minutes < 10) {
-    minutes = "0" + minutes;
-  }
-
-  return `${hours}:${minutes}`;
+  return result;
 }
 
 function PostItem({ post }) {
@@ -50,7 +52,7 @@ function PostItem({ post }) {
           </div>
           <div className={cx("post-content")}>{content}</div>
           <div className={cx("post-media")}>
-            <img src={media} alt="post media"></img>
+            {media && <img src={media} alt="post media" />}
           </div>
           <div className={cx("post-interact-container")}>
             <div className={cx("post-interact")}>

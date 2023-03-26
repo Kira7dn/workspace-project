@@ -11,7 +11,8 @@ function Home() {
   const { loading, error, data } = useQuery(GET_POSTS);
   if (loading) return <Spinner />;
   if (error) return <p>Error Happen</p>;
-  const postList = data.posts;
+  let postList = data.posts.slice();
+  postList.sort((a, b) => b.createdAt - a.createdAt);
   return (
     <div className={cx("wrapper")}>
       <div className={cx("inner")}>
