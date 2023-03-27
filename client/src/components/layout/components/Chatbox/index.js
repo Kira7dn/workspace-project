@@ -12,21 +12,23 @@ function ChatBox() {
   if (error) return <p>Something Went Wrong</p>;
   const friends = data.users;
   return (
-    <div className={cx("chatBox")}>
-      <div className={cx("chatBoxHeader")}>
-        <span
-          className={cx("chatBoxTitle")}
-        >{`Người liên hệ (${friends.length})`}</span>
-        <div className={cx("chatBoxAction")}>
-          <div className={cx("chatBoxActionItem")}>
-            <i className="fa-solid fa-magnifying-glass"></i>{" "}
-          </div>
-          <div className={cx("chatBoxActionItem")}>
-            <i className="fa-solid fa-ellipsis"></i>
+    <div className={cx("wrapper")}>
+      <div className={cx("chatBox")}>
+        <div className={cx("chatBoxHeader")}>
+          <span
+            className={cx("chatBoxTitle")}
+          >{`Người liên hệ (${friends.length})`}</span>
+          <div className={cx("chatBoxAction")}>
+            <div className={cx("chatBoxActionItem")}>
+              <i className="fa-solid fa-magnifying-glass"></i>{" "}
+            </div>
+            <div className={cx("chatBoxActionItem")}>
+              <i className="fa-solid fa-ellipsis"></i>
+            </div>
           </div>
         </div>
+        <FriendList friends={friends} />
       </div>
-      <FriendList friends={friends} />
     </div>
   );
 }

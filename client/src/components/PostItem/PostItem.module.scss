@@ -57,7 +57,10 @@
 }
 
 .post-action{
-
+    padding: 0px 8px;
+    &:hover{
+        color: var(--main-color)
+    }
 }
 
 .post-content{

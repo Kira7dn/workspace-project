@@ -4,12 +4,14 @@ import { useCallback, useState, useRef } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_POST } from "~/api/mutations";
 import { GET_POSTS } from "~/api/queries";
+import { ContainerClient } from "@azure/storage-blob";
 
 const cx = classNames.bind(styles);
 function PostInputForm() {
   const [value, setValue] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
 
+  // Handle choose Image
   const fileInputRef = useRef(null);
   const handleButtonClick = () => {
     fileInputRef.current.click();
@@ -21,25 +23,55 @@ function PostInputForm() {
   const [uploadPost, { loading }] = useMutation(CREATE_POST, {
     refetchQueries: [{ query: GET_POSTS }, "getPostsQuery"],
   });
+
+  // Handle auto Resize Text Area
   const handleChange = useCallback((event) => {
     const input = event.target;
     input.style.height = "auto";
     input.style.height = input.scrollHeight + "px";
     setValue(input.value);
   }, []);
-  const handleSubmit = (event) => {
+
+  // Upload to Azure
+  const handleUpload = async (uploadFile) => {
+    const accountName = "workspacestorage21";
+    const sasToken =
+      "sp=racwdl&st=2023-03-27T02:23:37Z&se=2023-05-01T10:23:37Z&spr=https&sv=2021-12-02&sr=c&sig=oaF7uM5AGu1MiL7kdIMc1iCVmYKiUUogObdvUJCa2Ec%3D";
+    const containerName = "postmedia";
+    const sasUrl = `https://${accountName}.blob.core.windows.net/${containerName}?${sasToken}`;
+    if (uploadFile) {
+      const blobName = uploadFile.name;
+      const containerClient = new ContainerClient(sasUrl);
+      const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+      const options = {
+        blobHTTPHeaders: {
+          blobContentType: uploadFile.type,
+        },
+      };
+      blockBlobClient.uploadBrowserData(selectedFile, options);
+      const imageUrl = blockBlobClient.url;
+      return imageUrl;
+    } else {
+      return null;
+    }
+  };
+
+  // Handle Submit > Upload Image > Resize text Area
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
     const textarea = form.querySelector('textarea[name="idea"]');
-    uploadPost({
-      variables: {
-        input: {
-          content: value,
-          media: null,
+    await handleUpload(selectedFile).then((imageUrl) => {
+      uploadPost({
+        variables: {
+          input: {
+            content: value,
+            media: imageUrl,
+          },
         },
-      },
-    }).then(() => {
+      }).then(() => {});
       setValue("");
+      setSelectedFile(null);
       textarea.style.height = "auto";
     });
   };
@@ -114,22 +146,6 @@ function PostInputForm() {
                   onChange={handleFileSelect}
                   style={{ display: "none" }}
                 />
-              </div>
-              {/* GIF action */}
-              <div className={cx("action-button")}>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <g>
-                    <path d="M3 5.5C3 4.119 4.12 3 5.5 3h13C19.88 3 21 4.119 21 5.5v13c0 1.381-1.12 2.5-2.5 2.5h-13C4.12 21 3 19.881 3 18.5v-13zM5.5 5c-.28 0-.5.224-.5.5v13c0 .276.22.5.5.5h13c.28 0 .5-.224.5-.5v-13c0-.276-.22-.5-.5-.5h-13zM18 10.711V9.25h-3.74v5.5h1.44v-1.719h1.7V11.57h-1.7v-.859H18zM11.79 9.25h1.44v5.5h-1.44v-5.5zm-3.07 1.375c.34 0 .77.172 1.02.43l1.03-.86c-.51-.601-1.28-.945-2.05-.945C7.19 9.25 6 10.453 6 12s1.19 2.75 2.72 2.75c.85 0 1.54-.344 2.05-.945v-2.149H8.38v1.032H9.4v.515c-.17.086-.42.172-.68.172-.76 0-1.36-.602-1.36-1.375 0-.688.6-1.375 1.36-1.375z"></path>
-                  </g>
-                </svg>
-              </div>
-              {/* Poll Action */}
-              <div className={cx("action-button")}>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <g>
-                    <path d="M6 5c-1.1 0-2 .895-2 2s.9 2 2 2 2-.895 2-2-.9-2-2-2zM2 7c0-2.209 1.79-4 4-4s4 1.791 4 4-1.79 4-4 4-4-1.791-4-4zm20 1H12V6h10v2zM6 15c-1.1 0-2 .895-2 2s.9 2 2 2 2-.895 2-2-.9-2-2-2zm-4 2c0-2.209 1.79-4 4-4s4 1.791 4 4-1.79 4-4 4-4-1.791-4-4zm20 1H12v-2h10v2zM7 7c0 .552-.45 1-1 1s-1-.448-1-1 .45-1 1-1 1 .448 1 1z"></path>
-                  </g>
-                </svg>
               </div>
               {/* Emoji Action */}
               <div className={cx("action-button")}>

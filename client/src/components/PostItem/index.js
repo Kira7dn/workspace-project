@@ -2,8 +2,12 @@ import classNames from "classnames/bind";
 import styles from "./PostItem.module.scss";
 import Image from "~/assets/img";
 
+import PostAction from "~/components/PostItem/component/PostAction";
+
 const cx = classNames.bind(styles);
 const { Comment, Share, Retweet, Like, Views } = Image;
+
+// Calculate time
 function getTimeDifference(timestamp) {
   const now = new Date();
   let date = new Date(timestamp).toDateString().split(" ");
@@ -22,8 +26,17 @@ function getTimeDifference(timestamp) {
 }
 
 function PostItem({ post }) {
-  const { user, content, media, views, like, retweet, comments, createdAt } =
-    post;
+  const {
+    id,
+    user,
+    content,
+    media,
+    views,
+    like,
+    retweet,
+    comments,
+    createdAt,
+  } = post;
   let time = getTimeDifference(createdAt);
   return (
     <div className={cx("wrapper")}>
@@ -46,9 +59,11 @@ function PostItem({ post }) {
               </div>
               <div className={cx("post-time")}>{time}</div>
             </div>
-            <div className={cx("post-action")}>
-              <i className="fa-solid fa-ellipsis"></i>
-            </div>
+            <PostAction id={id}>
+              <div className={cx("post-action")}>
+                <i className="fa-solid fa-ellipsis"></i>
+              </div>
+            </PostAction>
           </div>
           <div className={cx("post-content")}>{content}</div>
           <div className={cx("post-media")}>
@@ -57,35 +72,30 @@ function PostItem({ post }) {
           <div className={cx("post-interact-container")}>
             <div className={cx("post-interact")}>
               <div className={cx("post-interact-img")}>
-                {/* <img src={Image.comment} alt="comment" /> */}
                 <Comment />
               </div>
               <span>{comments.length}</span>
             </div>
             <div className={cx("post-interact")}>
               <div className={cx("post-interact-img")}>
-                {/* <img src={Image.retweet} alt="retweet" /> */}
                 <Retweet />
               </div>
               <span>{retweet}</span>
             </div>
             <div className={cx("post-interact")}>
               <div className={cx("post-interact-img")}>
-                {/* <img src={Image.like} alt="like" /> */}
                 <Like />
               </div>
               <span>{like}</span>
             </div>
             <div className={cx("post-interact")}>
               <div className={cx("post-interact-img")}>
-                {/* <img src={Image.views} alt="views" /> */}
                 <Views />
               </div>
               <span>{views}</span>
             </div>
             <div className={cx("post-interact")}>
               <div className={cx("post-interact-img")}>
-                {/* <img src={Image.share} alt="share" /> */}
                 <Share />
               </div>
             </div>

@@ -31,6 +31,13 @@ const CREATE_POST = gql`
     }
   }
 `;
+const DELETE_POST = gql`
+  mutation DELETE_POST($deletePostId: ID!) {
+    deletePost(id: $deletePostId) {
+      id
+    }
+  }
+`;
 const UPDATE_SPACE = gql`
   mutation UPDATE_SPACE($updateSpaceId: ID!, $input: SpaceInput) {
     updateSpace(id: $updateSpaceId, input: $input) {
@@ -130,4 +137,5 @@ export {
   UPDATE_PROJECT,
   DELETE_PROJECT,
   CREATE_POST,
+  DELETE_POST,
 };
