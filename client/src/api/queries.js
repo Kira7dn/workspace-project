@@ -1,27 +1,27 @@
 import { gql } from "@apollo/client";
 
-// const getSpaces = gql`
-//   query getSpacesQuery {
-//     spaces {
-//       id
-//       title
-//       description
-//       image
-//       user {
-//         fullname
-//         id
-//         avatar
-//         username
-//       }
-//       members {
-//         id
-//         fullname
-//         username
-//         avatar
-//       }
-//     }
-//   }
-// `;
+const GET_SPACES = gql`
+  query getSpacesQuery {
+    spaces {
+      id
+      title
+      description
+      image
+      user {
+        fullname
+        id
+        avatar
+        username
+      }
+      members {
+        id
+        fullname
+        username
+        avatar
+      }
+    }
+  }
+`;
 const GET_FRIENDS = gql`
   query getFriendsQuery {
     users {
@@ -126,7 +126,7 @@ const GET_POSTS = gql`
 // `;
 
 export {
-  // getSpaces,
+  GET_SPACES,
   GET_FRIENDS,
   GET_POSTS,
   // GET_PROJECTS,

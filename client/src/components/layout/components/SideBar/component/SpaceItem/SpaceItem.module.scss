@@ -1,0 +1,60 @@
+
+.wrapper {
+    animation: fadein 0.2s;
+    -webkit-animation: fadein 0.2s ease-in;
+    // border: 1px solid #d8d7d7;
+    box-shadow: 1px 1px #ededed;
+    margin: 4px;
+    border-radius:8px
+}
+.inner{
+    padding:4px
+}
+@keyframes fadein {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+.team-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.team-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #9a9a9a;
+  }
+
+.space-title {
+    margin: 0 4px;
+    font-size: 10px;
+    max-width: 100px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+}
+.space-image {
+    display: flex;
+    justify-content:center;
+    height: 60px;
+    width: 60px;
+    width: 100%;
+    overflow: hidden;
+    margin: 4px 0;
+  }
+.space-image img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    background-color: #fff;
+}

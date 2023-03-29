@@ -1,6 +1,7 @@
 import styles from "./SideBar.module.scss";
 import classNames from "classnames/bind";
 import Button from "~/components/Button";
+import WorkSpaces from "./component/WorkSpaces";
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -15,18 +16,8 @@ const MENU_ITEMS = [
     to: "/",
   },
   {
-    icon: <i className="fa-solid fa-house-laptop" />,
-    name: "Work Spaces",
-    to: "/work-space",
-  },
-  {
     icon: <i className="fa-solid fa-list-check"></i>,
     name: "Task",
-    to: "/",
-  },
-  {
-    icon: <i className="fa-solid fa-user-group" />,
-    name: "Friend",
     to: "/",
   },
   {
@@ -40,14 +31,19 @@ function NavbarMenu() {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("inner")}>
-        {MENU_ITEMS.map((item, index) => {
-          return (
-            <Button className={cx("menuItem")} to={item.to} key={index}>
-              {item.icon}
-              <div className={cx("menuTitle")}>{item.name}</div>
-            </Button>
-          );
-        })}
+        <div className={cx("sidebar")}>
+          {MENU_ITEMS.map((item, index) => {
+            return (
+              <Button className={cx("menuItem")} to={item.to} key={index}>
+                {item.icon}
+                <div className={cx("menuTitle")}>{item.name}</div>
+              </Button>
+            );
+          })}
+        </div>
+        <div className={cx("work-space")}>
+          <WorkSpaces />
+        </div>
       </div>
     </div>
   );

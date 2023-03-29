@@ -1,0 +1,32 @@
+.wrapper{
+    display: flex;
+    border-top: 1px dashed #eeeaea;
+    border-bottom: 1px dashed #eeeaea;
+}
+
+.inner{
+
+}
+
+.title{
+    padding: 12px 16px ;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+}
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 12px 0px ;
+}
+  
+.flex-item {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    flex-basis: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 50%;
+}
