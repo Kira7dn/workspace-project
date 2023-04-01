@@ -3,6 +3,7 @@ import Project from "~/pages/Project";
 import UserInfo from "~/pages/UserInfo";
 import WorkSpace from "~/pages/WorkSpace";
 import { HeaderOnly } from "~/components/layout";
+import NotFound from "~/pages/NotFound";
 
 const privateRoutes = [
   { path: "/", component: Home },
@@ -12,7 +13,8 @@ const privateRoutes = [
     component: UserInfo,
     layout: HeaderOnly,
   },
-  { path: "/work-space", component: WorkSpace },
+  { path: "/work-space/:id", component: WorkSpace },
+  { path: "*", component: NotFound },
 ];
 const publicRoutes = [];
 export { publicRoutes, privateRoutes };

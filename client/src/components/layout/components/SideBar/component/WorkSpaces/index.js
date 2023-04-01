@@ -3,8 +3,8 @@ import classNames from "classnames/bind";
 import { GET_SPACES } from "~/api/queries";
 import Spinner from "~/components/Spinner";
 import SpaceItem from "../SpaceItem";
-// import SpaceModal from "../SpaceModal";
 import styles from "./WorkSpaces.module.scss";
+import addIcon from "~/assets/img/svg/plus-circle-fill.svg";
 
 const cx = classNames.bind(styles);
 function WorkSpaces() {
@@ -18,13 +18,18 @@ function WorkSpaces() {
           <span>WorkSpace List</span>
         </div>
         <div className={cx("flex-container")}>
-          {spaces.map((space, index) => {
+          {spaces.map((space) => {
             return (
               <div className={cx("flex-item")} key={space.id}>
                 <SpaceItem space={space} />
               </div>
             );
           })}
+          <div className={cx("flex-item")}>
+            <div className={cx("addBtn")}>
+              <img src={addIcon} alt="add-space" />
+            </div>
+          </div>
         </div>
       </div>
     </div>

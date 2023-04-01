@@ -22,6 +22,20 @@ const GET_SPACES = gql`
     }
   }
 `;
+const GET_SPACE = gql`
+  query getSpaceQuery($spaceId: ID!) {
+    space(id: $spaceId) {
+      description
+      image
+      title
+      members {
+        avatar
+        fullname
+        id
+      }
+    }
+  }
+`;
 const GET_FRIENDS = gql`
   query getFriendsQuery {
     users {
@@ -62,36 +76,36 @@ const GET_POSTS = gql`
     }
   }
 `;
-// const GET_PROJECTS = gql`
-//   query getProjectsQuery($spaceId: ID!) {
-//     projects(spaceId: $spaceId) {
-//       id
-//       title
-//       description
-//       target
-//       deadline
-//       leader {
-//         id
-//         fullname
-//         username
-//         avatar
-//       }
-//       members {
-//         id
-//         fullname
-//         username
-//         avatar
-//       }
-//       progress
-//       children {
-//         id
-//         title
-//         deadline
-//         progress
-//       }
-//     }
-//   }
-// `;
+const GET_PROJECTS = gql`
+  query getProjectsQuery($spaceId: ID!) {
+    projects(spaceId: $spaceId) {
+      id
+      title
+      description
+      target
+      deadline
+      leader {
+        id
+        fullname
+        username
+        avatar
+      }
+      members {
+        id
+        fullname
+        username
+        avatar
+      }
+      progress
+      children {
+        id
+        title
+        deadline
+        progress
+      }
+    }
+  }
+`;
 // const GET_PROJECT = gql`
 //   query GET_PROJECT($projectId: ID!) {
 //     project(id: $projectId) {
@@ -126,9 +140,10 @@ const GET_POSTS = gql`
 // `;
 
 export {
+  GET_SPACE,
   GET_SPACES,
   GET_FRIENDS,
   GET_POSTS,
-  // GET_PROJECTS,
+  GET_PROJECTS,
   // GET_PROJECT
 };

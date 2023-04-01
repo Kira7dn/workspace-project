@@ -9,10 +9,10 @@ const Controller = {
   getProjectsByList: async (list) => {
     return await Project.find({ _id: { $in: list } });
   },
-  getProjects: async ({ spaceId, userId }) => {
-    const Parent = await Space.findById(spaceId);
-    const list = Parent.projects;
-    return await Project.find({ _id: { $in: list } });
+  getProjects: async ({ spaceId }) => {
+    console.log(spaceId);
+    projects = await Project.find({ space: spaceId });
+    return projects;
   },
   createProject: async ({ parentId, input, userId }) => {
     const newProject = new Project({
@@ -51,9 +51,7 @@ const Controller = {
       new: true,
     });
     if (!updated)
-      throw new UserInputError(
-        "Project not found or user not authorized"
-      );
+      throw new UserInputError("Project not found or user not authorized");
     return updated;
   },
   deleteProject: async ({ id, userId }) => {
@@ -63,9 +61,7 @@ const Controller = {
     };
     const deletedSpace = await Project.findOneAndDelete(Condition);
     if (!deletedSpace)
-      throw new UserInputError(
-        "Project not found or user not authorized"
-      );
+      throw new UserInputError("Project not found or user not authorized");
     return deletedSpace;
   },
 };

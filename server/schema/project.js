@@ -59,27 +59,18 @@ const resolvers = {
   Query: {
     project: async (parent, { id }, { mongoDataMethods, userId }) =>
       await mongoDataMethods.getProject({ userId, id }),
-    projects: async (
-      parent,
-      { spaceId },
-      { mongoDataMethods, userId }
-    ) => await mongoDataMethods.getProjects({ userId, spaceId }),
+    projects: async (parent, { spaceId }, { mongoDataMethods }) =>
+      await mongoDataMethods.getProjects({ spaceId }),
   },
   Project: {
     user: async ({ user }, args, { mongoDataMethods, userId }) =>
       await mongoDataMethods.getUser(user),
     leader: async ({ leader }, args, { mongoDataMethods, userId }) =>
       await mongoDataMethods.getUser(leader),
-    members: async (
-      { members },
-      args,
-      { mongoDataMethods, userId }
-    ) => await mongoDataMethods.getUsers(members),
-    children: async (
-      { children },
-      args,
-      { mongoDataMethods, userId }
-    ) => await mongoDataMethods.getProjectsByList(children),
+    members: async ({ members }, args, { mongoDataMethods, userId }) =>
+      await mongoDataMethods.getUsers(members),
+    children: async ({ children }, args, { mongoDataMethods, userId }) =>
+      await mongoDataMethods.getProjectsByList(children),
   },
   Mutation: {
     addProject: async (
@@ -104,11 +95,7 @@ const resolvers = {
         userId,
       });
     },
-    deleteProject: async (
-      parent,
-      { id },
-      { mongoDataMethods, userId }
-    ) => {
+    deleteProject: async (parent, { id }, { mongoDataMethods, userId }) => {
       return await mongoDataMethods.deleteProject({ id, userId });
     },
   },
