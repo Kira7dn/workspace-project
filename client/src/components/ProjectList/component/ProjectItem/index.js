@@ -3,13 +3,64 @@ import moment from "moment";
 import deadlineIcon from "~/assets/img/jpg/deadline.png";
 import projectIcon from "~/assets/img/jpg/project-title.png";
 import styles from "./ProjectItem.module.scss";
+import React, { useState } from "react";
+import { faLess } from "@fortawesome/free-brands-svg-icons";
+import classNames from "classnames/bind";
 
+const cx = classNames.bind(styles);
 const ProjectItem = ({ project }) => {
-  const { title, deadline, leader, members, children, progress, target } =
-    project;
+  const { id, title, deadline, leader, members, children, target } = project;
+  console.log(members);
+  const [checkedItems, setCheckedItems] = useState(faLess);
+  const handleChange = () => {
+    setCheckedItems(!checkedItems);
+  };
   return (
     <>
-      <div className={`ms-2 me-auto ${styles.childContainer}`}>
+      <div className={cx("childContainer")}>
+        <label>
+          <input
+            type="checkbox"
+            checked={checkedItems}
+            onChange={handleChange}
+          />
+          <div className={cx("projectlistitemtitle")}>{title}</div>
+        </label>
+        <div>
+          <strong>Target:</strong> {target}
+        </div>
+        <div className={styles.MemberContainer}>
+          <div className={styles.leaderInfo}>
+            {leader ? (
+              <>
+                <img
+                  src={leader ? leader.avatar : ""}
+                  alt={leader.username}
+                  className={`${styles.leaderAvatar} col-4`}
+                />
+                <div className={`${styles.leaderName} col-8 text-primary`}>
+                  {leader.fullname}
+                </div>
+              </>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        <div className={styles.projectlistitemdeadlinetag}>
+          <img
+            src={deadlineIcon}
+            alt="deadline"
+            className={`${styles.projectlistitemdeadlineicon} col-4`}
+          />
+          <div
+            className={`${styles.projectlistitemdeadlinecontent} text-danger`}
+          >
+            {moment(deadline).format("DD-MMM")}
+          </div>
+        </div>
+      </div>
+      {/* <div className={`ms-2 me-auto ${styles.childContainer}`}>
         <div className="p-2">
           <div className="mb-4">
             <Row>
@@ -22,17 +73,6 @@ const ProjectItem = ({ project }) => {
                 <p className={`${styles.projectlistitemcontent} text-primary`}>
                   {title}
                 </p>
-              </Col>
-              <Col
-                className={`${styles.projectlistitemprogresscontainer} col-6`}
-              >
-                <ProgressBar
-                  className={`p-0 ${styles.projectlistitemprogressbar}`}
-                  animated
-                  variant="success"
-                  now={progress}
-                  label={`Progress: ${progress}%`}
-                />
               </Col>
             </Row>
           </div>
@@ -145,19 +185,8 @@ const ProjectItem = ({ project }) => {
             </Row>
           </div>
         </div>
-        <div className={styles.projectlistitemdeadlinetag}>
-          <img
-            src={deadlineIcon}
-            alt="deadline"
-            className={`${styles.projectlistitemdeadlineicon} col-4`}
-          />
-          <div
-            className={`${styles.projectlistitemdeadlinecontent} text-danger`}
-          >
-            {moment(deadline).format("DD-MMM")}
-          </div>
-        </div>
-      </div>
+        
+      </div> */}
     </>
   );
 };

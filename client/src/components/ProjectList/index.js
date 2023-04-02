@@ -19,7 +19,6 @@ const ProjectList = ({ spaceId }) => {
       {projects.map((project, index) => (
         <ProjectItem project={project} key={index} />
       ))}
-      <h2>Projects</h2>
     </div>
   );
 };

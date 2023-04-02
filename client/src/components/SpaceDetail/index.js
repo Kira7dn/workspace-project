@@ -3,6 +3,7 @@ import { GET_SPACE } from "~/api/queries";
 import Spinner from "~/components/Spinner";
 import styles from "./SpaceDetail.module.scss";
 import classNames from "classnames/bind";
+import TippyAction from "./component/TippyAction";
 
 const cx = classNames.bind(styles);
 function SpaceDetail({ spaceId }) {
@@ -12,50 +13,61 @@ function SpaceDetail({ spaceId }) {
     },
   });
   if (loading) return <Spinner />;
-  const { title, description, image, members } = data.space;
+  const { id, title, description, image, members, user } = data.space;
   return (
-    <div
-      className={`shadow p-3 ${styles.spaceItem}`}
-      border="primary"
-      style={{
-        cursor: "default",
-      }}
-    >
-      <div>
-        <div className="col-12">
-          <h6 className={styles.spacetitle}>{title}</h6>
+    <div className={cx("wrapper")}>
+      <div className={cx("inner")}>
+        <div className={cx("avatar-container")}>
+          <img src={user.avatar} alt="avatar"></img>
         </div>
-      </div>
-      <div>
-        <div className="align-items-center">
-          <img
-            src={image}
-            className={`${styles.spaceimg} img-fluid`}
-            alt="img"
-          />
+        <div className={cx("space-container")}>
+          <div className={cx("space-header-container")}>
+            <div className={cx("space-header")}>
+              <div className={cx("user-info")}>
+                <div className={cx("fullname")}>
+                  {user.fullname}
+                  <div className={cx("username-icon")}>
+                    <img src={user.icon} alt="user icon"></img>
+                  </div>
+                </div>
+                <div className={cx("username")}>@{user.username}</div>
+              </div>
+              <TippyAction id={id}>
+                <div className={cx("space-action")}>
+                  <i className="fa-solid fa-ellipsis"></i>
+                </div>
+              </TippyAction>
+            </div>
+            <div className={cx("space-title")}>
+              <span>{title}</span>
+            </div>
+          </div>
+          <div className={cx("space-content")}>{description}</div>
+          <div className={cx("space-media")}>
+            {image && <img src={image} alt="space media" />}
+          </div>
+          <div className={cx("space-footer")}>
+            <div className={cx("space-members")}>
+              <div className={cx("members-title")}>
+                <span>{`Members(${members.length}):`}</span>
+              </div>
+              <div className={cx("team-list")}>
+                {members.map((member) => {
+                  return (
+                    <span key={member.id} className={cx("member-info")}>
+                      <img
+                        src={member.avatar}
+                        className={cx("member-avatar")}
+                        alt=""
+                      />
+                      <div className={cx("member-name")}>{member.fullname}</div>
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="align-middle"></div>
-      </div>
-      <div className="">
-        <p className={styles.spacedesc}>{description}</p>
-      </div>
-      <div>
-        <p className="mb-0">{`Team (${members.length})`}</p>
-
-        <span className={`${styles.teamlist}`}>
-          {members.map((member) => {
-            return (
-              <span key={member.id} className={styles.memberinfo}>
-                <img
-                  src={member.avatar}
-                  className={styles.memberavatar}
-                  alt=""
-                />
-                <div className={styles.membername}>{member.fullname}</div>
-              </span>
-            );
-          })}
-        </span>
       </div>
     </div>
   );

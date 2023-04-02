@@ -33,6 +33,13 @@ const GET_SPACE = gql`
         fullname
         id
       }
+      user {
+        icon
+        avatar
+        username
+        id
+        fullname
+      }
     }
   }
 `;
