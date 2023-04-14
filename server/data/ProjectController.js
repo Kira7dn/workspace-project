@@ -10,7 +10,6 @@ const Controller = {
     return await Project.find({ _id: { $in: list } });
   },
   getProjects: async ({ spaceId }) => {
-    console.log(spaceId);
     projects = await Project.find({ space: spaceId });
     return projects;
   },

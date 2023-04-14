@@ -1,239 +1,70 @@
 /* Project-List */
-.projectList {
-  margin-top: 10px;
-  margin-right: 5px;
-  border: solid 1px #888;
-  border-radius: 8px;
-  transition: transform 0.2s;
-  cursor: pointer;
-  position: relative;
-}
-.projectList:hover {
-  transform: translateY(-10px) translateX(10px);
-  border: solid 2px #888;
-  box-shadow: -4px 4px 4px -2px rgba(0, 0, 0, 0.15);
-}
-.projectlistitemtitle {
-  display: flex;
-  align-items: center;
-  vertical-align: middle;
-  height: 100%;
-}
-.projectIcon {
-  width: 60px;
-  height: 40px;
-  margin-right: 16px;
-}
-
-.projectlistitemcontent {
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 800;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-transform: capitalize;
-}
-
-.projectlistitemprogresscontainer {
-  align-items: center;
-  vertical-align: middle;
-  display: flex;
-}
-
-.projectlistitemprogressbar {
-  display: block;
-  align-items: center;
-  text-align: center;
-  line-height: 32px;
-  font-size: 16px;
-  height: 32px;
-  width: 100%;
-  padding: 0;
-}
-
-.projectlistitemtarget {
-  margin: 0;
-  height: 100%;
-  overflow: hidden;
-  overflow-y: auto;
-  text-transform: capitalize;
-  border-radius: 4px;
-  color: #000000;
-}
-
-.projectlistitemtargettitle {
+.wrapper{
   padding: 4px;
-  font-size: 16px;
-  color: #000000;
+  margin-top: 8px;
+  border-radius:8px;
+  box-shadow: 1px 1px #cccbcb;
 }
+.inner{
+  display: flex;
+}
+.task-status{
+  width: 48px;
+  display: flex;
+  justify-content:center
+}
+.task-info-container{
+  display: flex;
+  flex-direction: column;
+}
+.task-header{
+  display: flex;
+  justify-content:space-between
+}
+.task-title {
+  font-size: 15px;
 
-.projectlistitemtargetcontent {
-  padding: 6px;
+}
+.task-body{
+  display: flex;
+}
+.task-target {
   font-size: 14px;
-  max-height: 120px;
-  width: 100%;
-  /* overflow: hidden;
-    overflow-y: auto; */
-}
-
-.leaderContainer {
-  font-size: 12px;
   padding: 4px;
+  flex: 1;
+
 }
 
-.leaderTitle {
+.task-incharge {
+  width: 25%;
+  padding: 4px;
+  border-radius:8px;
+}
+
+.task-incharge span {
   height: 20px;
-  font-size: 16px;
-  line-height: 100%;
+  font-size: 15px;
 }
-.leaderInfo {
+.incharge-info{
   display: flex;
-  width: 100%;
   align-items: center;
+
 }
-.leaderAvatar {
+.incharge-info img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  margin: 4px;
 }
 
-.leaderName {
-  margin-left: 6px;
-  text-transform: uppercase;
-  font-size: 14px;
-}
-
-.MemberContainer {
-  padding-left: 16px;
-}
-
-.projectlistitemmemberinfo {
-  display: inline-flex;
-  height: 10px;
+.incharge-name {
+  display: flex;
   align-items: center;
-  margin-right: 2px;
-  padding-right: 4px;
-  border-radius: 2px;
-}
-
-.projectlistitemmembername {
-  font-size: 10px;
-  text-transform: capitalize;
-}
-
-.projectlistitemmemberavatar {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-
-.projectlistitemactionitemlist {
-}
-
-.ActionTitle {
-  padding: 4px;
-  font-size: 16px;
-  color: #000000;
-  margin: 0;
-}
-
-.ActionItemTitle {
-  margin-left: 4px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  color: #888;
-}
-
-.projectlistitemchildprogresscontainer {
-}
-
-.projectlistitemchildprogressbar {
-}
-
-.projectlistitemchilddeadlinetag {
-  width: auto;
-  height: 18px;
-  position: absolute;
-  top: -8px;
-  right: -10px;
-  display: block;
-  padding: 2px;
-  align-items: center;
-  background-color: #fff;
-  border: solid 2px rgb(241, 11, 11);
-  border-radius: 4px 0 0 4px;
-}
-.projectlistitemchilddeadlinetag::after {
-  content: "";
-  position: absolute;
-  right: -2px;
-  bottom: -7px;
-  border-top: 6px solid rgba(241, 11, 11, 0.4);
-  border-right: 9px solid transparent;
-  filter: brightness(60%);
-}
-
-.projectlistitemchilddeadlinecontent {
   font-size: 12px;
-  font-weight: 600;
-  line-height: 12px;
-  text-align: center;
-  vertical-align: middle;
-  margin: auto;
-  padding: 0 2px;
 }
-
-.projectlistitemdeadlinetag {
-  position: absolute;
-  top: -14px;
-  right: -18px;
-  display: flex;
-  flex-direction: row;
-  padding: 4px;
-  align-items: center;
-  background-color: #fff;
-  border: solid 2px rgb(241, 11, 11);
-  border-radius: 4px 0 0 4px;
+.incharge-name span{
+  line-height:100%;
 }
-.projectlistitemdeadlinetag::after {
-  content: "";
-  position: absolute;
-  right: -2px;
-  bottom: -20px;
-  border-top: 18px solid rgba(241, 11, 11, 0.4);
-  border-right: 17px solid transparent;
-  filter: brightness(60%);
-}
-
-.projectlistitemdeadlineicon {
-  width: 80px;
-  height: auto;
-  margin-right: 16px;
-}
-
-.projectlistitemdeadlinecontent {
-  display: inline-block;
-  font-size: 14px;
-  max-width: 56px;
-  cursor: text;
-  font-weight: 800;
-}
-.actionItems {
-  max-height: 134px;
-  width: 100%;
-  overflow: hidden;
-  overflow-y: auto;
-}
-.actionItem {
-  width: 90%;
-  display: flex;
-  justify-content: between;
-  align-items: flex-start;
-}
-.actionItem:first-child {
-  margin-top: 10px;
+.action-button{
+  margin-right: 4px;
 }

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/d5d5a24f-0ccc-4d26-959e-b034d892bacf/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/workspace-server",
+    "appService.deploySubpath": "server"
+}
